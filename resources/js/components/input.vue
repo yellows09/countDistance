@@ -50,15 +50,12 @@ export default {
             }).then(response => {
                 this.geo_lat = response.data.suggestions[0].data.geo_lat
                 this.geo_lon = response.data.suggestions[0].data.geo_lon
-                console.log(response.data.suggestions[0].data.geo_lat)
-                console.log(response.data.suggestions[0].data.geo_lon)
                 this.suggestPlace = response.data.suggestions
             })
         },
         counting() {
             axios.get('/api/calculate/' + this.geo_lat + '/' + this.geo_lon)
                 .then(response => {
-                    console.log(response)
                     this.distance = response.data
                 })
         }

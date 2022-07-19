@@ -19509,8 +19509,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       }).then(function (response) {
         _this.geo_lat = response.data.suggestions[0].data.geo_lat;
         _this.geo_lon = response.data.suggestions[0].data.geo_lon;
-        console.log(response.data.suggestions[0].data.geo_lat);
-        console.log(response.data.suggestions[0].data.geo_lon);
         _this.suggestPlace = response.data.suggestions;
       });
     },
@@ -19518,7 +19516,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var _this2 = this;
 
       axios.get('/api/calculate/' + this.geo_lat + '/' + this.geo_lon).then(function (response) {
-        console.log(response);
         _this2.distance = response.data;
       });
     }
