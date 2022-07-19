@@ -15,7 +15,7 @@
     </div>
     <div class="suggestions" v-for="suggestions in suggestPlace">
         <ul>
-            <li class="list-suggest" @click="suggestValue=suggestions.value">{{ suggestions.value }}</li>
+            <li class="list-suggest" @click="copy">{{ suggestions.value }}</li>
         </ul>
     </div>
     <button @click="counting" class="gradient-button">Рассчитать</button>
@@ -32,10 +32,15 @@ export default {
             result: '',
             geo_lat: 0,
             geo_lon: 0,
-            distance: 0
+            distance: 0,
+            cp: '123'
         }
     },
     methods: {
+        copy(){
+            console.log(this.result)
+            navigator.clipboard.writeText(this.suggestPlace[0].value)
+        },
         suggest(event) {
             this.title = event.target.value
             axios.post('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {
